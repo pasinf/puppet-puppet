@@ -11,7 +11,6 @@ class puppet(
   $extra_modules = "",
   $mysql_root_password = 'changeme',
   $mysql_password = 'changeme',
-  $dashboard = true
 ) {
 
   package { puppet-common:
@@ -71,9 +70,13 @@ class puppet(
       refreshonly => true
     }
 
-# set up reports and dashboard under passenger
-    if ( $dashboard ) {
-      include puppet::dashboard
+    if $report_enable {
+      file { '/var/lib/puppet/reports':
+        ensure => directory,
+        mode   => 0750,
+        owner  => puppet,
+        group  => puppet,
+      }
     }
 
   }
