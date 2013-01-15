@@ -1,0 +1,14 @@
+# modulepath: /etc/puppet/modules
+repos:
+  repo_paths:
+    # Core repo
+    #https://github.com/pasinf/puppet-puppet: puppet
+    https://github.com/puppetlabs/puppetlabs-apache: apache
+    # Middleware Repos
+    https://github.com/puppetlabs/puppetlabs-mysql: mysql
+    # Foundational Repos
+    https://github.com/puppetlabs/puppetlabs-apt: apt
+    https://github.com/puppetlabs/puppetlabs-concat: concat
+    https://github.com/puppetlabs/puppetlabs-stdlib: stdlib
+  checkout_branches:
+#    puppet: master
