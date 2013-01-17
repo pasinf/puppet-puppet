@@ -102,6 +102,7 @@ class puppet::dashboard (
   mysql::db { $dashboard_db:
     user     => $dashboard_user,
     password => $dashboard_password,
+    host     => localhost,
     charset  => $dashboard_charset,
   }
 
