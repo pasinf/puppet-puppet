@@ -16,10 +16,6 @@ class puppet(
   package { puppet-common:
     ensure => present
   }
-# install latest facter version due to issues with ubuntu one
-  package { 'facter':
-    ensure => latest
-  }
   if ($run_master) {
 # run master under passenger
     package { "puppetmaster-passenger":
@@ -84,6 +80,11 @@ class puppet(
   if ($run_agent) {
     package { puppet:
       ensure => present
+    }
+# install latest facter version due to issues with ubuntu one
+    package { 'facter':
+      ensure => latest,
+      notify => Exec["restart-puppet"],
     }
 
     file { '/etc/default/puppet':
